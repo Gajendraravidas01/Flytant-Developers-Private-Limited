@@ -60,8 +60,8 @@ const Home = () => {
         }
     };
   return (
-    <div className='h-screen flex m-20 '>
-        <div className="leftside w-2/5 pr-14 pl-2">
+    <div className='h-screen flex flex-col md:flex-row m-4 md:m-20 '>
+        <div className="leftside w-full md:w-2/5 pr-0 md:pr-14 pl-2">
             <div className="flex justify-between">
                 <Link to={'/todo'}>
                     <img 
@@ -78,7 +78,7 @@ const Home = () => {
                 <Card todos={todos} setTodos={setTodos} onCardClick = {handleCardClick}/>
             </div>
         </div>
-        <div className="right w-3/5 shadow-md">
+        <div className="right w-full md:w-3/5 shadow-md mt-8 md:mt-0">
             {selectedTodo ? (
                 <div className="box bg-white h-full rounded-2xl p-10">
                 <div className='flex justify-between items-center '>
@@ -96,20 +96,13 @@ const Home = () => {
                         
                 </div>
 
-                <input
-                    type="text"
-                    value={selectedTodo.title.replace(/<\/?[^>]+(>|$)/g, "")}
-                    onChange={(e) =>
-                    setSelectedTodo({ ...selectedTodo, title: e.target.value })
-                    }
-                    className="border border-black rounded-lg w-full p-2 mb-8 text-lg mt-10"
-                />
+                
                 <ReactQuill
                     value={selectedTodo.title}
                     onChange={(value) =>
                         setSelectedTodo({ ...selectedTodo, title: value })
                     }
-                    className="border border-black rounded-lg w-full p-2 mb-8 text-lg mt-10"
+                    className="border border-black rounded-lg w-full p-2 mb-8 text-3xl mt-10"
                 />
                 <textarea
                     value={selectedTodo.description}
